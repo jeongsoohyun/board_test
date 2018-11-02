@@ -1,0 +1,5 @@
+package com.raizcorp.board.impl;
+
+public class BoardRowMapper {
+
+}

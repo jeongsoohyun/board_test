@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 객체를 따로 생성하지 않고 base-package 로 시작하는 모든 패키지를 스캔하여 자동으로 객체 생성 -->
+	<context:component-scan base-package="com.raizcorp.board"></context:component-scan>
+	
+	<bean id="userService" class="com.raizcorp.user.impl.UserServiceImpl">
+	    <property name="userDAO" ref="userDAO"></property> <!-- UserServiceImpl 클래스에서 UserDAO 객체를 의존성 주입하기 위한 property 설정 -->
+	</bean>
+	
+	<bean id="userDAO" class="com.raizcorp.user.impl.UserDAO"></bean>
+</beans>

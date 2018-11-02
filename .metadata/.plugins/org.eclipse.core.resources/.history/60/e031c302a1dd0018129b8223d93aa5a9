@@ -1,0 +1,10 @@
+package com.raizcorp.user.impl;
+
+import com.raizcorp.user.UserService;
+
+@Service("userService")
+public class UserServiceImpl implements UserService {
+	
+	@Autowired
+	private UserDAO userDAO;
+}

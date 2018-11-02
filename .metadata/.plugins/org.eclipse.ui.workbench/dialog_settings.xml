@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item value="651" key="DIALOG_X_ORIGIN"/>
+		<item value="8" key="DIALOG_Y_ORIGIN"/>
+	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
-		<item value="-1" key="dialogHeight"/>
-		<item value="-1" key="dialogWidth"/>
+		<item value="759" key="dialogHeight"/>
+		<item value="1440" key="dialogWidth"/>
 		<list key="textEntries">
 		</list>
 		<list key="orderedElements">
@@ -13,9 +17,9 @@
 		</list>
 	</section>
 	<section name="NewWizardAction">
-		<item value="org.springframework.ide.eclipse.beans.ui.wizards.newBeansConfig" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<item value="org.eclipse.ui.wizards.new.file" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="org.springframework.ide.eclipse.beans.ui.wizards.category"/>
+			<item value="org.eclipse.ui.Basic"/>
 		</list>
 	</section>
 </section>
