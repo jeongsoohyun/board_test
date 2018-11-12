@@ -2,11 +2,14 @@ package com.raizcorp.board.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.raizcorp.board.BoardVO;
 
-// DAT(Data Access Object)
+// DAO(Data Access Object)
 // DB 연동을 담당아흔 class. 따라서 CRUD(Create, Read, Update, Delet) 기능의 메소드가 구현되어야 함.
+
+@Repository
 public class BoardDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -42,5 +45,10 @@ public class BoardDAO {
 		
 		Object[] args = {vo.getSeq()};
 		return jdbcTemplate.queryForObject(BOARD_GET, args, new BoardRowMapper());
+	}
+
+	public Object getBoardList(BoardVO vo) {
+
+		return null;
 	}
 }

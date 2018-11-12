@@ -1,7 +1,0 @@
-package com.raizcorp.user.impl;
-
-import com.raizcorp.user.UserService;
-
-public class UserServiceImpl implements UserService {
-
-}

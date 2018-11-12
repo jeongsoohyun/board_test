@@ -17,8 +17,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public void insertBoard(BoardVO vo) {
-		// TODO Auto-generated method stub
-		
+		boardDAO.insertBoard(vo);
 	}
 
 	@Override
@@ -40,7 +39,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> getBoradList(BoardVO vo) {
+	public List<BoardVO> getBoardList(BoardVO vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}

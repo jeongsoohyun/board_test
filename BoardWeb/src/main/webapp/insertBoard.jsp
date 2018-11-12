@@ -10,7 +10,7 @@
 			<h1>글 등록</h1>
 			<a href="logout_proc.jsp">Log-out</a>
 			<hr>
-			<form action="insertBoard_proc.jsp" method="post">
+			<form action="insertBoard.do" method="post">
 				<table border="1" cellpadding="0" cellspacing="0">
 					<tr>
 						<td bgcolor="orange" width="70">제목</td>
@@ -18,7 +18,7 @@
 					</tr>
 					<tr>
 						<td bgcolor="orange">작성자</td>
-						<td align="left" name="writer" size="10"></td>
+						<td align="left" name="writer" size="10" value="${boardVO.writer }"></td>
 					</tr>
 					<tr>
 						<td bgcolor="orange">내용</td>

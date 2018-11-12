@@ -1,7 +1,0 @@
-package com.raizcorp.board.impl;
-
-// DAT(Data Access Object)
-// DB 연동을 담당아흔 class. 따라서 CRUD(Create, Read, Update, Delet) 기능의 메소드가 구현되어야 함.
-public class BoardDAO {
-	
-}

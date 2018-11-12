@@ -1,7 +1,0 @@
-package com.raizcorp.board.impl;
-
-import com.raizcorp.board.BoardService;
-
-public class BoardServiceImpl implements BoardService {
-
-}

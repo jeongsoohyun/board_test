@@ -1,32 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-<!-- 
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  
+  <filter>
+      <filter-name>characterEncoding</filter-name>
+      <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+      <init-param>
+          <param-name>encoding</param-name>
+          <param-value>EUC-KR</param-value>
+      </init-param>
+  </filter>
+  
+  <filter-mapping>
+      <filter-name>characterEncoding</filter-name>
+      <url-pattern>*.do</url-pattern>
+  </filter-mapping>
+
+  <!-- 
+  	Spring MVC 의 구성 요소 중에서 DispatcherServlet 클래스가 유일한 서블릿이다.
+  	따라서 써블릿 컨테이너는 Web.xml 파일에 등록된 DispatcherServlet만 생성해준다.
+  	
+  	서블릿 컨테이너가 DispatcherServlet 객체를 생성하고 나면 재정의된 init() 메소드가 자동으로 실행된다.
+  	그러면 init() 메소드는 스프링 설정 파일(action-servlet.xml) 을 로딩하여 XmlWebApplicationContext를 생성한다. 즉 스프링 컨테이너가 구동되는 것이다.
+  	따라서 스프링 설정 파일 (action-servlet.xml) 에 DispatcherServlet이 사용할 HandlerMapping, Controller, ViewResolver 클래스를
+  	<bean> 등록하면 스플이 컨테이너가 해당 객체들을 생성해준다.
+   -->
+  
+  <!-- DispatcherServlet은 Spring 컨테이너를 구동할 때, web.xml 파일에 등록된 서블릿 이름 뒤에 '-servlet.xml'을 붙여서 스프링 설정파일을 찾는다. -->
+  <servlet>
+    <servlet-name>action</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<init-param>
+  	    <param-name>contextConfigLocation</param-name>
+  	    <param-value>/WEB-INF/config/presentation-layer.xml</param-value>
+  	</init-param>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+    <!-- DispatcherServlet이 생성되어 presentation-layer.xml 파일을 읽고 스프링 컨테이너를 구동하면 Controller 객체들이 메모리에 생성된다.
+  		Controller 객체들이 생성되기 이전에 먼저 applicationContext.xml 파일을 읽어 비즈니스 컴포넌트들을 메모리에 생성해야 한다.
+  		이때 사용하는 클래스가 ContextConfigLocation 이다.
+  		ContextLoaderListner 클래스는 서블릿 컨테이너가 web.xml 파일을 읽어서 구동될 때 자동으로 메모리에 생성된다.
+  		즉, 클라이언트의 요청이 없어도 컨테이너가 구동될 때 pre-Loading 되는 객체이다. -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>classpath:applicationContext.xml</param-value>
 	</context-param>
-	
-	Creates the Spring Container shared by all Servlets and Filters
+
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
-	Processes application requests
-	<servlet>
-		<servlet-name>appServlet</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-		
-	<servlet-mapping>
-		<servlet-name>appServlet</servlet-name>
-		<url-pattern>/</url-pattern>
-	</servlet-mapping>
- -->
 </web-app>
